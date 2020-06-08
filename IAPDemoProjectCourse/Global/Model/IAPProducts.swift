@@ -3,7 +3,7 @@
 //  IAPDemoProjectCourse
 //
 //  Created by mac on 08.06.2020.
-//  Copyright © 2020 Ivan Akulov. All rights reserved.
+//  Copyright © 2020 Aleksandr Balabon. All rights reserved.
 //
 
 import Foundation

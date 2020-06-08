@@ -1,9 +1,9 @@
 //
 //  MainController.swift
-//  IAPDemoProject
+//  IAPDemoProjectCourse
 //
-//  Created by Ivan Akulov on 26/10/2017.
-//  Copyright © 2017 Ivan Akulov. All rights reserved.
+//  Created by mac on 08.06.2020.
+//  Copyright © 2020 Aleksandr Balabon. All rights reserved.
 //
 
 import UIKit

@@ -7,9 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		04684E42248E700F00D46E4B /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 04684E41248E700F00D46E4B /* StoreKit.framework */; };
 		04D9A844248E64580026CCDD /* IAPProducts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04D9A843248E64580026CCDD /* IAPProducts.swift */; };
 		04D9A848248E659F0026CCDD /* IAPManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04D9A847248E659F0026CCDD /* IAPManager.swift */; };
-		04E17173248E61C0006ED955 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 04E17172248E61C0006ED955 /* StoreKit.framework */; };
 		3534CE811FA1B45400E591BC /* CellIdentifiers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3534CE801FA1B45400E591BC /* CellIdentifiers.swift */; };
 		35D094E41FA1A73D005C5BC5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35D094E31FA1A73D005C5BC5 /* AppDelegate.swift */; };
 		35D094E91FA1A73D005C5BC5 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 35D094E71FA1A73D005C5BC5 /* Main.storyboard */; };
@@ -20,9 +20,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		04684E41248E700F00D46E4B /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
 		04D9A843248E64580026CCDD /* IAPProducts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IAPProducts.swift; sourceTree = "<group>"; };
 		04D9A847248E659F0026CCDD /* IAPManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IAPManager.swift; sourceTree = "<group>"; };
-		04E17172248E61C0006ED955 /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
 		04E17174248E6216006ED955 /* IAPDemoProjectCourse.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = IAPDemoProjectCourse.entitlements; sourceTree = "<group>"; };
 		3534CE801FA1B45400E591BC /* CellIdentifiers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CellIdentifiers.swift; sourceTree = "<group>"; };
 		35D094E01FA1A73D005C5BC5 /* IAPDemoProjectCourse.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = IAPDemoProjectCourse.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -40,7 +40,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				04E17173248E61C0006ED955 /* StoreKit.framework in Frameworks */,
+				04684E42248E700F00D46E4B /* StoreKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -197,7 +197,7 @@
 		C9059C0E1FA640DF00FB10CA /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				04E17172248E61C0006ED955 /* StoreKit.framework */,
+				04684E41248E700F00D46E4B /* StoreKit.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -230,7 +230,7 @@
 			attributes = {
 				LastSwiftUpdateCheck = 0900;
 				LastUpgradeCheck = 0900;
-				ORGANIZATIONNAME = "Ivan Akulov";
+				ORGANIZATIONNAME = "Aleksandr Balabon";
 				TargetAttributes = {
 					35D094DF1FA1A73D005C5BC5 = {
 						CreatedOnToolsVersion = 9.0;
