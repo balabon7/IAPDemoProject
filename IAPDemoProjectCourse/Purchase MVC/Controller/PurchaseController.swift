@@ -28,7 +28,7 @@ class PurchaseController: UIViewController {
     }
     
     @objc private func restorePurchases() {
-        print("restoring purchases")
+        iapManager.restoreCompletedTransactions()
     }
 
     private func setupNavigationBar() {
