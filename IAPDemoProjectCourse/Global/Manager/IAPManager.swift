@@ -18,12 +18,13 @@ class IAPManager: NSObject {
     private override init() { }
     
     var products: [SKProduct] = []
+    let paymantQueue = SKPaymentQueue.default()
     
     public func setupPurchases(callback: @escaping(Bool) -> ()) {
         // проверка устройства на осуществление платежа
         if SKPaymentQueue.canMakePayments()  {
             //устанавляваем .add(self) что бы мы могли добавить себя в качестве наблюдателя
-            SKPaymentQueue.default().add(self)
+            paymantQueue.add(self)
             callback(true)
             return
         }
@@ -42,13 +43,35 @@ class IAPManager: NSObject {
         productRequest.start()
     }
     
+    public func purchase(productWith identifier: String) {
+        guard let product = products.filter({$0.productIdentifier == identifier}).first else { return }
+        let paymant = SKPayment(product: product)
+        paymantQueue.add(paymant)
+    }
+    
 }
 
 
 extension IAPManager: SKPaymentTransactionObserver {
- // Реализуем обязательный метод
+    // Реализуем обязательный метод
     func paymentQueue(_ queue: SKPaymentQueue, updatedTransactions transactions: [SKPaymentTransaction]) {
-        
+        for transaction in transactions {
+            switch transaction.transactionState {
+            case .deferred:
+                break
+            case .purchasing:
+                break
+            case .failed:
+                print("Failed")
+            case .purchased:
+                print("Purchased")
+            case .restored:
+                print("Restored")
+
+            @unknown default:
+                print("Default")
+            }
+        }
     }
 }
 

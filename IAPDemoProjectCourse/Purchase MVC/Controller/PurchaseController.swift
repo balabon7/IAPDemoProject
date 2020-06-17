@@ -12,6 +12,7 @@ import StoreKit
 class PurchaseController: UIViewController {
     
     @IBOutlet weak var tableView: UITableView!
+    let iapManager = IAPManager.shared
   
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -22,6 +23,9 @@ class PurchaseController: UIViewController {
         NotificationCenter.default.addObserver(self, selector: #selector(reload), name: NSNotification.Name(IAPManager.productNotificationIdentifire), object: nil)
     }
     
+    deinit {
+        NotificationCenter.default.removeObserver(self)
+    }
     
     @objc private func restorePurchases() {
         print("restoring purchases")
@@ -52,13 +56,13 @@ extension PurchaseController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return IAPManager.shared.products.count
+        return iapManager.products.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: CellIdentifiers.purchaseCell, for: indexPath)
         
-        let product = IAPManager.shared.products[indexPath.row]
+        let product = iapManager.products[indexPath.row]
         cell.textLabel?.text = product.localizedTitle + " - "  + self.priceStringFor(product: product)
         return cell
     }
@@ -68,6 +72,8 @@ extension PurchaseController: UITableViewDataSource {
 extension PurchaseController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
 
+        let identifier = iapManager.products[indexPath.row].productIdentifier
+        iapManager.purchase(productWith: identifier)
         
         tableView.deselectRow(at: indexPath, animated: true)
     }
