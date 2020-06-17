@@ -88,6 +88,7 @@ extension IAPManager: SKPaymentTransactionObserver {
     }
     
     private func completed(transaction: SKPaymentTransaction) {
+        NotificationCenter.default.post(name: NSNotification.Name(transaction.payment.productIdentifier), object: nil)
         paymantQueue.finishTransaction(transaction)
     }
     
