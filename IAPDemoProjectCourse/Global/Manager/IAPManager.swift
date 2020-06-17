@@ -11,6 +11,8 @@ import StoreKit
 
 class IAPManager: NSObject {
     
+    
+    static let productNotificationIdentifire = "IAPManagerProductIdentifire"
     static let shared = IAPManager()
     
     private override init() { }
@@ -18,8 +20,9 @@ class IAPManager: NSObject {
     var products: [SKProduct] = []
     
     public func setupPurchases(callback: @escaping(Bool) -> ()) {
-        // проверка устройства на осущиствление платежа
+        // проверка устройства на осуществление платежа
         if SKPaymentQueue.canMakePayments()  {
+            //устанавляваем .add(self) что бы мы могли добавить себя в качестве наблюдателя
             SKPaymentQueue.default().add(self)
             callback(true)
             return
@@ -27,6 +30,7 @@ class IAPManager: NSObject {
         callback(false)
     }
     
+    // Получаем товары по запросу с идентификатором
     public func getProducts() {
         let identifiers: Set = [IAPProducts.consumable.rawValue,
                                 IAPProducts.nonConsumable.rawValue,
@@ -40,17 +44,23 @@ class IAPManager: NSObject {
     
 }
 
+
 extension IAPManager: SKPaymentTransactionObserver {
-    
+ // Реализуем обязательный метод
     func paymentQueue(_ queue: SKPaymentQueue, updatedTransactions transactions: [SKPaymentTransaction]) {
         
     }
 }
 
 extension IAPManager: SKProductsRequestDelegate {
-    
+    // Реальзуем метод который дает нам ответ от сервера и добавляет товат в масив
     func productsRequest(_ request: SKProductsRequest, didReceive response: SKProductsResponse) {
         self.products = response.products
         products.forEach { print($0.localizedTitle) }
+        
+        if products.count > 0 {
+            NotificationCenter.default.post(name: NSNotification.Name(IAPManager.productNotificationIdentifire), object: nil)
+            
+        }
     }
 }
